@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Created by Yuan Kaixin
+%Run with XeLaTeX, 
+%then BibTeX, 
+%then XeLaTeX, 
+%then XeLaTeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[12pt]{article}%normal字体为12磅，也即小四
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{indentfirst}	%引用这一宏包，每段段首自动缩进
+\usepackage{amsmath}		%公式环境宏包，最好不要取消
+\usepackage{xeCJK}			%中日韩语环境宏包，只能用xelatex编译，不能用pdflatex编译
+\usepackage{graphicx}		%图片环境
+%\usepackage{verbatim}		%代码块宏包，如果报告中需要插入代码，则需要此宏包，反之，可以注释掉此宏包以节省编译时间
+\usepackage{float}				%图片浮动体环境，存在这一宏包，图片位置可以通过[H]句柄固定
+\usepackage{hyperref}		%超链接环境，引用这一宏包，图片公式等可以交叉引用跳转。
+%\usepackage{authblk}			%作者区环境，如不需要生成类似论文中的作者信息区，则不需要此宏包
+\usepackage[round]{natbib}%人名-时间引用文献格式，round句柄表示外围为圆括号
+%\usepackage{multicol}		%多栏排版格式宏包，例如两栏文字，三栏文字等。具体使用方法见multicol的帮助文档
+\usepackage[hmargin=1.25in, vmargin=1in]{geometry}%A4格式标准页边距
+\usepackage{CJKpunct}	%中日韩语标点符号
+\usepackage{fancyhdr}		%页眉页脚环境，用于生成页码
+\usepackage{lastpage}		%尾页的引用宏包，用于配合fancyhdr宏包
+\usepackage{array}				%高级表格环境宏包
+\usepackage[normalem]{ulem}				%智能下划线环境，句柄normalem取消了宏包与\emph标志的绑定，最好不要更改，否则会影响参考文献等默认使用\emph的部分。
+\usepackage{color}				%颜色支持宏包。不需要带有色彩的字体，则注释此项。图片不受影响。
+\usepackage{fontawesome}	%矢量图小图标宏包。通常来说用不到，你可以直接注释掉。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%杂项
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{colorlinks={false}}%超链接有无颜色，false为无。
+\punctstyle{banjiao}%半角标点符号
+\bibliographystyle{plainnat}%参考文献引用样式
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setmainfont{Times New Roman}%英文字体
+\setCJKmainfont[AutoFakeBold={2.17}, AutoFakeSlant={0.3}]{宋体}%中文字体
+\xeCJKsetup{CJKmath = true}%公式可用中日韩语
+%\xeCJKsetup{AutoFakeBold = {2.17}}
+
+%%文中可能用到的字体和行距
+\newcommand{\Biaoti}{\fontsize{26pt}{36pt}\selectfont}           % 一号, 1.4 倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{5pt}\selectfont}        % 小三, 表格专用
+\newcommand{\Xiaosan}{\fontsize{15pt}{30pt}\selectfont}        % 小三，单倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}            % 小四, 1.5倍行距
+\newcommand{\lastthing}{\fontsize{12pt}{15pt}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%浮体、编号等名称重定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\contentsname{目录}
+\renewcommand\partname{}
+\renewcommand\appendixname{附录}
+\renewcommand\refname{\Xiaosan\textbf{参考文献}}
+%\renewcommand\Authands{ , }
+\renewcommand\figurename{图}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%页脚样式
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{第\ \thepage\ 页，共\ \pageref{LastPage}\ 页}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%样式设置区
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\reposec}[1]{\section{\Xiaosan\textbf{#1}}}
+\newcommand{\reposubsec}[1]{\subsection{\xiaosi\textbf{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%封面信息区
+%必须反复核实！
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\reportuse}{研究生学位论文中期报告}%报告用途
+\newcommand{\reponame}{基于非晶合金材料的磁通门磁强计设计}%报告题目
+\newcommand{\authname}{袁恺鑫}                                               %%%%%%%作者
+\newcommand{\authnumb}{201918007513012}%学号
+\newcommand{\teacname}{杜爱民}%老师
+\newcommand{\teachrank}{研究员}%职称
+\newcommand{\studerank}{理学博士}%学位类别
+\newcommand{\majorarea}{地球与空间探测技术}%学科专业
+\newcommand{\majorproj}{空间物理探测技术}%研究方向
+\newcommand{\instidepar}{中国科学院地质与地球物理研究所}%研究所（院系）
+\newcommand{\datetable}{2022年1月5日}%填表日期
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%标题信息区
+%开题报告并不需要此项，因此全部注释
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\addcode}{北京\ 100029}%单位地点，邮编
+%\title{\reponame}%制作标题
+%\author[1]{\authname}%制作作者名
+%\affil[1]{\instidepar，\addcode}%制作单位信息
+%\date{}%制作写作日期，default：编译当天
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%begin the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Head Matters
+%\include{preface}%If the `prefacepro' below won't work properly, enable this file and edit it yourself
+\thispagestyle{empty}%取消这一页的页码
+\include{./prefaceCLS/prefacepro}%封面，此文件通常不需要修改
+
+%If a CONTENT is needed, enable it below.
+\thispagestyle{empty}%取消这一页的页码
+\tableofcontents		%生成目录
+\newpage        		%更换空白页
+
+%制作标题行，可选，与导言中的标题信息区必须同时注释或反注释！
+%\maketitle
+
+
+%%%%%%%%%%%%%%
+%Main Matter
+%edit it yourself!
+%there is a demo here!
+%如果需要分页开始，则用\include{$CHAPTER}来包含相应的子文件
+%如果不需要空白页，则用\input{$CHAPTER}包含。
+%%%%%%%%%%%%%%
+\xiaosi	%进入正文字体，具体见上
+\setcounter{page}{1}%将这一页设定为第一页
+\input{./Templates/SectionsTemp.tex}%input命令可以嵌套调用，即每个被input的文件里，还可以用input来调用另一个文件。这样可以避免单个tex文件过长而不便于阅读。
+\input{./Templates/FigureTemp.tex}
+\input{./Templates/MathTemp.tex}
+\input{./Templates/TableTemp.tex}
+\input{./Templates/SpecialTemp.tex}
+\input{./Templates/ReferenceTemp.tex}
+\input{./Templates/MISC.tex}
+%\input{./Chapters/chapter01}
+%\input{./Chapters/chapter02}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%citation part, generate the bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Those you readed and used, but not cited, put them here and enable the `nocite'
+\nocite{butta2016low}%未在文中出现，但确实重要的参考文献
+\lastthing
+\newpage%更换空白页
+\addcontentsline{toc}{section}{\Xiaosan\textbf{参考文献}}%生成参考文献的目录项，如果不需要目录，记得注释掉这句话。
+\bibliography{testRef}%注意修改成你自己的Bib库的名字
+\end{document}%z这一语句之后的信息，理论上都不会生效。但写错了会报错。

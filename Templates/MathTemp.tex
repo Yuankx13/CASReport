@@ -1,0 +1,34 @@
+\reposec{如何插入公式}
+插入公式有三类办法。
+\reposubsec{单行公式}
+顾名思义，单行公式只适用于仅有一行的公式。单行公式会整体居中，并在页面最右形成编号，例如：
+\begin{equation}
+1+1=2\label{eqn01}
+\end{equation}
+但也可以通过给单行公式加*号来取消编号。
+\begin{equation*}
+1+1=3
+\end{equation*}
+也可以自定义编号
+\begin{equation}
+1+1=11\tag{99}
+\end{equation}
+公式编号可以被交叉引用$\backslash ref$命令查询到，但前提是先在对应的想要引用的公式后面加上$\backslash label$命令进行标注，例如式\ref{eqn01}中的写法。请参考源代码。但一切的交叉引用若要生效，xelatex编译命令至少执行两次。否则会显示两个问号。\par
+同时，如果是方程组，虽然有多行，但应当只使用一个标号的情况，可以采用cases环境来编写，例如：
+\begin{equation}
+\begin{cases}
+B_S &\to\ 0.2\sim0.3T,\\
+W_H&\to\ 0,\\
+\dfrac{B_R}{B_S}&\to\ 0.5;\\
+H_C&\to\ 0,\\
+\mu_{init}\ &\to\  max\ .
+\end{cases}
+\end{equation}
+\reposubsec{多行公式}
+多行公式与单行公式大体相同，上面说到的关于编号、cases等的用法也可以大致通用。只是，多行公式涉及一个对齐的问题。多行公式的每行之间以$\&$这个符号的位置对齐，这个符号并不显示。在对其的前提下，整体再居中。例如下面的几行，以等于号对齐。其实，在上面的cases环境中，我们已经用到了$\&$来帮助对齐了。\par
+\begin{align}
+\mu_d&=\frac{1}{\mu_0}\frac{dB}{dH_1}\\
+&=\frac{1}{\mu_0}\left(a-\frac{3}{2}bH_m^2+\frac{3}{2}bH_m^2\cos (2\omega t)\right)
+\end{align}
+\reposubsec{行内公式}
+刚才的两种公式都是行间公式，每次进入公式环境，LaTeX都会自动新起一行。但如果想要在文字的中间插入公式或特殊符号，就需要行内公式了。很简单，用两个美元符号，将要写的公式放在中间即可，比如$\$\backslash mu\_d=\backslash frac\{1\}\{\backslash mu\_0\}\backslash frac\{dB\}\{dH\_1\}\$$可以表示$\mu_d=\frac{1}{\mu_0}\frac{dB}{dH_1}$作为行内公式。作为行内公式，latex真的比word排版得好看的多。

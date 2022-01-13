@@ -1,0 +1,43 @@
+\reposec{如何插入表格}
+表格是一个很复杂的东西，latex能插入的表格总的来说是比较简单的，很难实现复杂的效果，不建议拿LaTeX当MS Office Excel使用。我这里只提供一个简单的例子。最好还是参考文件夹里附送的《102分钟掌握LaTeX》的文档来搭建表格。
+\vspace{0.3cm}
+\renewcommand\arraystretch{1.7}
+\begin{center}
+\begin{tabular}{>{\raggedleft\arraybackslash}p{110pt}|>{\raggedright\arraybackslash}p{165pt}}
+	\hline
+	2022年2月至5月&完成非晶磁通门原型机搭建\\
+	\hline
+	2022年4月至9月&继续探索进一步噪声压制手段\\
+	\hline
+	2022年6月至7月&形成成果并发表\\
+	\hline
+	2022年1月前&完成毕业论文和学位答辩\\
+	\hline
+\end{tabular}
+\end{center}
+\vspace{0.3cm}\par
+解释一下上方的各个语句，请结合源代码查看。\par
+$\backslash vspace\{\}$命令是垂直空白距离，即Verticle Space。\par
+$\backslash renewcommand\backslash arraystretch\{\}$命令改动了array宏包默认的表格的行高。默认为1倍行距。花括号内填充的数字即为行距的倍数。\par
+$\backslash begin\{center\}$居中环境开始，与后方的$\backslash end\{center\}$（居中环境结束）成对出现，作用是将表格整体居中。\par
+$\backslash begin\{tabular\}$表格环境开始。接下来的花括号内都是表格的格式和修饰项。具体还是应该去看教程。我在这里也简单讲一下。
+\begin{enumerate}
+\item $>$是arrary宏包提供的功能，用于在表格定义参数的这个花括号内，直接对每一列的属性进行设置，避免单独设置的麻烦。
+\item 第一列：
+\begin{enumerate}
+\item $\backslash raggedleft$，直译为左边参差不齐，也即是文字居右。
+\item $\backslash arraybackslash$，使用了前一个标志$\backslash raggedleft$之后，表格的换行符$\backslash\backslash$可能会出错或失效，因此要加上这个标志，防止编译出错。
+\item $p\{110pt\}$表格格式声明符，注意最前面并没有反斜线。这一个标志的意思是，表格为固定列宽度（p）110磅（pt）。除了p之外，还有\textit{l, c, r}可以用，分别代表居左，居中，居右。但是注意，后三种参数不能强制规定列宽，也不能用$\backslash raggedleft$, $\backslash arraybackslash$这两个命令，列宽将会自动适应。我还是推荐使用$p\{\}$格式的表格，手动调节，会更美观一些。但一些较大的表格用p格式就可能太繁琐了。
+\end{enumerate}
+\item $|$竖线代表表格第一列和第二列之间的分界线为实线。如果不写这个竖线，则这两列之间没有分界线。但其他设置不变。同理，你可以看到由于第一列之前、最后一列之后没有写这个符号，所以表格最左边和最右边都没有边框线。
+\item $>$同上。
+\item $\backslash raggedright$，同理，直译为右边参差不齐，也即是文字居左。除此之外，你也可以用$\backslash centering$来居中。
+\item $\backslash arraybackslash$，同上。
+\item $p\{165pt\}$同上，但固定列宽为165磅。
+\end{enumerate}\par
+表格搭建完成，来看看内部的各个命令。\par
+$\backslash hline$，即\textit{horizontal line}，水平线。可以看作是行间分界线。\par
+$\&$，对齐符号，在表格环境里就是每列之间分界的位置。\par
+$\backslash\backslash$换行符号。\par
+想要深入了解，去看教程。\par
+
